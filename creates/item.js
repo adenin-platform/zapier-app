@@ -12,18 +12,23 @@ const createItem = (z, bundle) => {
       description: bundle.inputData.description,
       link: bundle.inputData.link,
       date: bundle.inputData.date,
-      owner: bundle.inputData.owner,
       dueDate: bundle.inputData.dueDate,
-      openValue: bundle.inputData.openValue,
-      openExpression: bundle.inputData.openExpression,
-      assignees: bundle.inputData.assignees,
+      openValue: doEval(bundle.inputData.openExpression),
+      assignedTo: bundle.inputData.assignedTo,
       roles: bundle.inputData.roles
     })
   });
   return responsePromise
     .then(response => JSON.parse(response.content));
 };
-
+function doEval(expression) {
+  try {
+    return eval(expression);
+  } catch (error) {
+    console.log(error);
+  }
+  return true;
+}
 module.exports = {
   key: 'items',
   noun: 'Item',
@@ -52,11 +57,9 @@ module.exports = {
       { key: 'description', label: 'Description', required: false },
       { key: 'link', label: 'Link', required: false },
       { key: 'date', label: 'Date', required: false },
-      { key: 'owner', label: 'Owner', required: false },
       { key: 'dueDate', label: 'Due Date', required: false },
-      { key: 'openValue', label: 'Open Value', required: false },
       { key: 'openExpression', label: 'Open Expression', required: false },
-      { key: 'assignees', label: 'Assignees', list: true, required: false },
+      { key: 'assignedTo', label: 'Assigned To', list: true, required: false },
       { key: 'roles', label: 'Roles', list: true, required: false }
     ],
     perform: createItem,
