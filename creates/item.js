@@ -1,9 +1,12 @@
-const createItem = (z, bundle) => {
-  const responsePromise = z.request({
+const fetch = require('node-fetch');
+
+const createItem = async (z, bundle) => {
+  const res = await fetch(bundle.authData.requestUrl, {
     method: 'POST',
-    url: bundle.authData.requestUrl,
+    json: false,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "x-apikey": bundle.authData.apiKey
     },
     body: JSON.stringify({
       _type: bundle.inputData.type,
@@ -15,11 +18,17 @@ const createItem = (z, bundle) => {
       dueDate: bundle.inputData.dueDate,
       openValue: doEval(bundle.inputData.openExpression),
       assignedTo: bundle.inputData.assignedTo,
-      roles: bundle.inputData.roles
+      roles: bundle.inputData.roles,
     })
   });
-  return responsePromise
-    .then(response => JSON.parse(response.content));
+
+  if (res.status === 200) {
+    // we have to return some object, event if it is empty, its expected
+    // ref: https://stackoverflow.com/a/51933850
+    return {};
+  } else {
+    throw new Error(`Unexpected status code ${res.status} and text: "${res.statusText}"`);
+  }
 };
 function doEval(expression) {
   try {
