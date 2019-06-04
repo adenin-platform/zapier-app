@@ -17,8 +17,8 @@ const createItem = async (z, bundle) => {
       date: bundle.inputData.date,
       dueDate: bundle.inputData.dueDate,
       openValue: doEval(bundle.inputData.openExpression),
-      assignedTo: bundle.inputData.assignedTo,
-      roles: bundle.inputData.roles,
+      assignedTo: bundle.inputData.assignedTo || [],
+      roles: bundle.inputData.roles || [],
     })
   });
 
