@@ -1,24 +1,32 @@
-const testAuth = (z, bundle) => {
+const fetch = require('node-fetch');
+
+const testAuth = async (z, bundle) => {
   // Normally you want to make a request to an endpoint that is either specifically designed to test auth, or one that
   // every user will have access to, such as an account or profile endpoint like /me.
   // In this example, we'll hit httpbin, which validates the Authorization Header against the arguments passed in the URL path
 
   // This method can return any truthy value to indicate the credentials are valid.
   // Raise an error to show
-  return z.request(
-    {
-      method: 'POST',
-      url: bundle.authData.requestUrl,
-      body: {
-        _type: "validate_key"
-      }
-    }).then((response) => {
+  const res = await fetch(bundle.authData.requestUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      "x-apikey": bundle.authData.apiKey
+    },
+    body: JSON.stringify({
+      _type: "validate_key"
+    })
+  });
 
-      if (response.status === 403) {
-        throw new Error('The API Key you supplied is invalid');
-      }
-      return response.json;
-    });
+  if (res.status === 200) {
+    // we have to return some object, event if it is empty, its expected
+    // ref: https://stackoverflow.com/a/51933850
+    return {};
+  } else if (res.status === 403) {
+    throw new Error('The API Key you supplied is invalid');
+  } else {
+    throw new Error(`Unexpected status code ${res.status} and text: "${res.statusText}"`);
+  }
 };
 module.exports = {
   type: 'custom',
