@@ -58,7 +58,12 @@ module.exports = {
         choices: {
           'issue': "Issue",
           'ticket': "Ticket",
-          'lead': "Lead"
+          'lead': "Lead",
+          'task': "Task",
+          'news': "News",
+          'event': "Event",
+          'approval': "Approval",
+          'document': "Document"
         }
       },
       { key: 'id', label: 'Id', required: true },
