@@ -63,7 +63,9 @@ module.exports = {
           'news': "News",
           'event': "Event",
           'approval': "Approval",
-          'document': "Document"
+          'document': "Document",
+          'alert': "Alert",
+          'announcement': "Announcement"
         }
       },
       { key: 'id', label: 'Id', required: true },
