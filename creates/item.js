@@ -1,3 +1,5 @@
+'use strict';
+
 const fetch = require('node-fetch');
 
 const createItem = async (z, bundle) => {
@@ -6,7 +8,7 @@ const createItem = async (z, bundle) => {
     json: false,
     headers: {
       'Content-Type': 'application/json',
-      "x-apikey": bundle.authData.apiKey
+      'x-apikey': bundle.authData.apiKey
     },
     body: JSON.stringify({
       _type: bundle.inputData.type,
@@ -18,7 +20,7 @@ const createItem = async (z, bundle) => {
       dueDate: bundle.inputData.dueDate,
       openValue: doEval(bundle.inputData.openExpression),
       assignedTo: bundle.inputData.assignedTo || [],
-      roles: bundle.inputData.roles || [],
+      roles: bundle.inputData.roles || []
     })
   });
 
@@ -30,54 +32,56 @@ const createItem = async (z, bundle) => {
     throw new Error(`Unexpected status code ${res.status} and text: "${res.statusText}"`);
   }
 };
+
 function doEval(expression) {
   try {
+    // eslint-disable-next-line no-eval
     return eval(expression);
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log(error);
   }
   return true;
 }
+
 module.exports = {
   key: 'items',
   noun: 'Item',
-
   display: {
     label: 'Create Item',
     description: 'Creates a Item.'
   },
-
   operation: {
     inputFields: [
       {
-        key: "type",
-        type: "string",
-        label: "Type",
+        key: 'type',
+        type: 'string',
+        label: 'Type',
         required: true,
-        helpText: "Type of object you are passing.",
+        helpText: 'Type of object you are passing.',
         choices: {
-          'issue': "Issue",
-          'ticket': "Ticket",
-          'lead': "Lead",
-          'task': "Task",
-          'news': "News",
-          'event': "Event",
-          'approval': "Approval",
-          'document': "Document",
-          'alert': "Alert",
-          'announcement': "Announcement"
+          issue: 'Issue',
+          ticket: 'Ticket',
+          lead: 'Lead',
+          task: 'Task',
+          news: 'News',
+          event: 'Event',
+          approval: 'Approval',
+          document: 'Document',
+          alert: 'Alert',
+          announcement: 'Announcement'
         }
       },
-      { key: 'id', label: 'Id', required: true },
-      { key: 'title', label: 'Title', required: true },
-      { key: 'description', label: 'Description', required: false },
-      { key: 'link', label: 'Link', required: false },
-      { key: 'date', label: 'Date', required: false },
-      { key: 'dueDate', label: 'Due Date', required: false },
-      { key: 'openExpression', label: 'Open Expression', required: false },
-      { key: 'assignedTo', label: 'Assigned To', list: true, required: false },
-      { key: 'roles', label: 'Roles', list: true, required: false }
+      {key: 'id', label: 'Id', required: true},
+      {key: 'title', label: 'Title', required: true},
+      {key: 'description', label: 'Description', required: false},
+      {key: 'link', label: 'Link', required: false},
+      {key: 'date', label: 'Date', required: false},
+      {key: 'dueDate', label: 'Due Date', required: false},
+      {key: 'openExpression', label: 'Open Expression', required: false},
+      {key: 'assignedTo', label: 'Assigned To', list: true, required: false},
+      {key: 'roles', label: 'Roles', list: true, required: false}
     ],
-    perform: createItem,
+    perform: createItem
   }
 };
