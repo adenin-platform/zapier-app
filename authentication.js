@@ -1,3 +1,5 @@
+'use strict';
+
 const fetch = require('node-fetch');
 
 const testAuth = async (z, bundle) => {
@@ -11,10 +13,10 @@ const testAuth = async (z, bundle) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      "x-apikey": bundle.authData.apiKey
+      'x-apikey': bundle.authData.apiKey
     },
     body: JSON.stringify({
-      _type: "validate_key"
+      _type: 'validate_key'
     })
   });
 
@@ -28,19 +30,18 @@ const testAuth = async (z, bundle) => {
     throw new Error(`Unexpected status code ${res.status} and text: "${res.statusText}"`);
   }
 };
+
 module.exports = {
   type: 'custom',
   // Define any auth fields your app requires here. The user will be prompted to enter this info when
   // they connect their account.
   fields: [
-    { key: 'apiKey', label: 'API Key', required: true, type: 'string' },
-    { key: 'requestUrl', label: 'Request Url', required: true, type: 'string' }
+    {key: 'apiKey', label: 'API Key', required: true, type: 'string'},
+    {key: 'requestUrl', label: 'Webhook Receiver URL', required: true, type: 'string'}
   ],
   // The test method allows Zapier to verify that the credentials a user provides are valid. We'll execute this
   // method whenver a user connects their account for the first time.
-
-  test: testAuth,
-
+  test: testAuth
   // assuming "username" is a key in the json returned from testAuth
   /*
   connectionLabel: (z, bundle) => {

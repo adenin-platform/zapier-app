@@ -1,3 +1,4 @@
+'use strict';
 
 const authentication = require('./authentication');
 const itemCreate = require('./creates/item');
@@ -9,17 +10,20 @@ const includeApiKey = (request, z, bundle) => {
     request.params = request.params || {};
     //request.params.api_key = bundle.authData.apiKey;
     //
-    request.headers["X-APIKEY"] = bundle.authData.apiKey;
+    request.headers['X-APIKEY'] = bundle.authData.apiKey;
     // (If you want to include the key as a header instead)
     //
   }
+
   return request;
 };
 
+// eslint-disable-next-line no-unused-vars
 const handleHTTPError = (response, z) => {
   if (response.status >= 400) {
     throw new Error(`Unexpected status code ${response.status}`);
   }
+
   return response;
 };
 
@@ -28,31 +32,21 @@ const App = {
   // need to know these before we can upload
   version: require('./package.json').version,
   platformVersion: require('zapier-platform-core').version,
-
   authentication: authentication,
-
   beforeRequest: [
     includeApiKey
   ],
-
   afterResponse: [
     handleHTTPError
   ],
-
-  resources: {
-  },
-
+  resources: {},
   // If you want your trigger to show up, you better include it here!
-  triggers: {
-  },
-
+  triggers: {},
   // If you want your searches to show up, you better include it here!
-  searches: {
-  },
-
+  searches: {},
   // If you want your creates to show up, you better include it here!
   creates: {
-    [itemCreate.key]: itemCreate,
+    [itemCreate.key]: itemCreate
   }
 };
 
