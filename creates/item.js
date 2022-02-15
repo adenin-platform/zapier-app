@@ -72,15 +72,16 @@ module.exports = {
           announcement: 'Announcement'
         }
       },
-      {key: 'id', label: 'Id', required: true},
-      {key: 'title', label: 'Title', required: true},
-      {key: 'description', label: 'Description', required: false},
-      {key: 'link', label: 'Link', required: false},
-      {key: 'date', label: 'Date', required: false},
-      {key: 'dueDate', label: 'Due Date', required: false},
-      {key: 'openExpression', label: 'Open Expression', required: false},
-      {key: 'assignedTo', label: 'Assigned To', list: true, required: false},
-      {key: 'roles', label: 'Roles', list: true, required: false}
+      { key: 'id', label: 'Id', required: true },
+      { key: 'title', label: 'Title', required: true },
+      { key: 'description', label: 'Description', required: false },
+      { key: 'link', label: 'Link', required: false },
+      { key: 'date', label: 'Date', required: false },
+      { key: 'dueDate', label: 'Due Date', required: false },
+      { key: 'openExpression', label: 'Open Expression', required: false },
+      { key: 'assignedTo', label: 'Assigned To', list: true, required: false },
+      { key: 'roles', label: 'Roles', list: true, required: false },
+      { key: 'properties', label: 'Properties', dict: true, required: false }
     ],
     perform: createItem
   }
