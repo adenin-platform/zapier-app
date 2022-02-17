@@ -81,7 +81,12 @@ module.exports = {
       { key: 'openExpression', label: 'Open Expression', required: false },
       { key: 'assignedTo', label: 'Assigned To', list: true, required: false },
       { key: 'roles', label: 'Roles', list: true, required: false },
-      { key: 'properties', label: 'Properties', dict: true, required: false }
+      { key: 'properties', label: 'Properties', dict: true, required: false },
+      {
+        key: 'role',
+        label: 'Role',
+        dynamic: 'rolesList.id.title'
+      }
     ],
     perform: createItem
   }
