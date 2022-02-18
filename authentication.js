@@ -58,5 +58,6 @@ module.exports = {
   },
   fields: [
     { key: 'host', type: 'string', required: true, default: 'https://app.adenin.com' },
+    { key: 'webhookEndpoint', type: 'string', required: true, default: '/webhook2' }
   ],
 };

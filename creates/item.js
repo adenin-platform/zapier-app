@@ -3,12 +3,12 @@
 const fetch = require('node-fetch');
 
 const createItem = async (z, bundle) => {
-  const res = await fetch(bundle.authData.requestUrl, {
+  const res = await fetch(bundle.authData.host + bundle.authData.webhookEndpoint, {
     method: 'POST',
     json: false,
     headers: {
       'Content-Type': 'application/json',
-      'x-apikey': bundle.authData.apiKey
+      'Authorization': `Bearer ${bundle.authData.access_token}`
     },
     body: JSON.stringify({
       _type: bundle.inputData.type,
@@ -20,7 +20,8 @@ const createItem = async (z, bundle) => {
       dueDate: bundle.inputData.dueDate,
       openValue: doEval(bundle.inputData.openExpression),
       assignedTo: bundle.inputData.assignedTo || [],
-      roles: bundle.inputData.roles || []
+      roles: bundle.inputData.roles || [],
+      properties: bundle.inputData.properties || []
     })
   });
 
@@ -80,12 +81,12 @@ module.exports = {
       { key: 'dueDate', label: 'Due Date', required: false },
       { key: 'openExpression', label: 'Open Expression', required: false },
       { key: 'assignedTo', label: 'Assigned To', list: true, required: false },
-      { key: 'roles', label: 'Roles', list: true, required: false },
       { key: 'properties', label: 'Properties', dict: true, required: false },
       {
-        key: 'role',
-        label: 'Role',
-        dynamic: 'rolesList.id.title'
+        key: 'roles',
+        label: 'Roles',
+        list: true,
+        dynamic: 'rolesList.name.title'
       }
     ],
     perform: createItem
