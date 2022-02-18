@@ -57,21 +57,10 @@ module.exports = {
       {
         key: 'type',
         type: 'string',
-        label: 'Type',
+        label: 'Card Name',
         required: true,
-        helpText: 'Type of object you are passing.',
-        choices: {
-          issue: 'Issue',
-          ticket: 'Ticket',
-          lead: 'Lead',
-          task: 'Task',
-          news: 'News',
-          event: 'Event',
-          approval: 'Approval',
-          document: 'Document',
-          alert: 'Alert',
-          announcement: 'Announcement'
-        }
+        helpText: 'Name of the Card this data is for',
+        default: 'New Card'
       },
       { key: 'id', label: 'Id', required: true },
       { key: 'title', label: 'Title', required: true },
