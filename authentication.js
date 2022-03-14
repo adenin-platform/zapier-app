@@ -54,6 +54,21 @@ module.exports = {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     },
+    refreshAccessToken: {
+      method: 'POST',
+      url: '{{bundle.inputData.host}}/oauth2/token',
+      body: {
+        refresh_token: '{{bundle.authData.refresh_token}}',
+        client_id: '{{process.env.CLIENT_ID}}',
+        client_secret: '{{process.env.CLIENT_SECRET}}',
+        redirect_uri: '{{bundle.inputData.redirect_uri}}',
+        grant_type: 'refresh_token',
+      },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    },
+    autoRefresh: true,
     scope: '',
   },
   fields: [
