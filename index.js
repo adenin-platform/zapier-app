@@ -2,6 +2,7 @@
 
 const authentication = require('./authentication');
 const itemCreate = require('./creates/item');
+const eventTrigger = require('./triggers/event');
 
 const addBearerHeader = (request, z, bundle) => {
   if (bundle.authData && bundle.authData.access_token) {
@@ -47,7 +48,9 @@ const App = {
       },
     }
   },
-  triggers: {},
+  triggers: {
+    [eventTrigger.key]: eventTrigger
+  },
   searches: {},
   creates: {
     [itemCreate.key]: itemCreate
