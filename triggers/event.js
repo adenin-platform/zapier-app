@@ -10,7 +10,7 @@ const subscribeHook = (z, bundle) => {
     body: data,
   };
 
-  return z.request(options).then((response) => response.data);
+  return z.request(options).then((response) => response.json);
 };
 
 const unsubscribeHook = (z, bundle) => {
@@ -19,7 +19,7 @@ const unsubscribeHook = (z, bundle) => {
     method: 'DELETE',
   };
 
-  return z.request(options).then((response) => response.data);
+  return z.request(options).then((response) => response.json);
 };
 
 const getEvent = (z, bundle) => {
@@ -27,7 +27,7 @@ const getEvent = (z, bundle) => {
     url: `${bundle.authData.host}/api/events/${bundle.cleanedRequest.eventName}`,
   };
 
-  return z.request(options).then((response) => [response.data.Data.event]);
+  return z.request(options).then((response) => [response.json.Data.event]);
 };
 
 const getEvents = (z, bundle) => {
@@ -35,7 +35,7 @@ const getEvents = (z, bundle) => {
     url: `${bundle.authData.host}/api/events`,
   };
 
-  return z.request(options).then((response) => response.data.Data.items || []);
+  return z.request(options).then((response) => response.json.Data.items || []);
 };
 
 module.exports = {
