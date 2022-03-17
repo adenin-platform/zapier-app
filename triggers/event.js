@@ -5,7 +5,7 @@ const subscribeHook = (z, bundle) => {
   };
 
   const options = {
-    url: `${bundle.authData.host}/api/subscribe`,
+    url: `${bundle.authData.host}/api/events/subscribe`,
     method: 'POST',
     body: data,
   };
@@ -14,10 +14,8 @@ const subscribeHook = (z, bundle) => {
 };
 
 const unsubscribeHook = (z, bundle) => {
-  const hookId = bundle.subscribeData.id;
-
   const options = {
-    url: `${bundle.authData.host}/api/unsubscribe/${hookId}`,
+    url: `${bundle.authData.host}/api/events/unsubscribe/${bundle.subscribeData.eventName}`,
     method: 'DELETE',
   };
 
@@ -25,24 +23,19 @@ const unsubscribeHook = (z, bundle) => {
 };
 
 const getEvent = (z, bundle) => {
-  const event = {
-    id: bundle.cleanedRequest.id,
-    eventName: bundle.cleanedRequest.eventName
+  const options = {
+    url: `${bundle.authData.host}/api/events/${bundle.cleanedRequest.eventName}`,
   };
 
-  return [event];
+  return z.request(options).then((response) => [response.data.Data?.event]);
 };
 
-const getFallbackRealEvent = (z, bundle) => {
-  /* const options = {
-    url: 'https://57b20fb546b57d1100a3c405.mockapi.io/api/recipes/',
-    params: {
-      style: bundle.inputData.style,
-    },
+const getEvents = (z, bundle) => {
+  const options = {
+    url: `${bundle.authData.host}/api/events`,
   };
 
-  return z.request(options).then((response) => response.data); */
-  return [getEvent(z, bundle)];
+  return z.request(options).then((response) => response.data.Data?.items || []);
 };
 
 module.exports = {
@@ -64,18 +57,17 @@ module.exports = {
     performSubscribe: subscribeHook,
     performUnsubscribe: unsubscribeHook,
     perform: getEvent,
-    performList: getFallbackRealEvent,
+    performList: getEvents,
     sample: {
       id: 1,
-      eventName: 'New Event'
+      eventName: 'New Event',
+      name: 'Zapier'
     },
     outputFields: [
       { key: 'id', label: 'ID' },
-      { key: 'createdAt', label: 'Created At' },
-      { key: 'name', label: 'Name' },
-      { key: 'directions', label: 'Directions' },
-      { key: 'authorId', label: 'Author ID' },
-      { key: 'style', label: 'Style' },
+      { key: 'eventName', label: 'Event Name' },
+      { key: 'name', label: 'Event Type' },
+      { key: 'url', label: 'URL' }
     ],
   },
 };
