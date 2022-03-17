@@ -27,7 +27,7 @@ const getEvent = (z, bundle) => {
     url: `${bundle.authData.host}/api/events/${bundle.cleanedRequest.eventName}`,
   };
 
-  return z.request(options).then((response) => [response.data.Data?.event]);
+  return z.request(options).then((response) => [response.data.Data.event]);
 };
 
 const getEvents = (z, bundle) => {
@@ -35,7 +35,7 @@ const getEvents = (z, bundle) => {
     url: `${bundle.authData.host}/api/events`,
   };
 
-  return z.request(options).then((response) => response.data.Data?.items || []);
+  return z.request(options).then((response) => response.data.Data.items || []);
 };
 
 module.exports = {
