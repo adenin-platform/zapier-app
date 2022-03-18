@@ -1,9 +1,8 @@
 'use strict';
 
-const fetch = require('node-fetch');
-
 const testAuth = async (z, bundle) => {
-  const res = await fetch(bundle.authData.host + '/api/session/myprofile', {
+  const res = await z.request({
+    url: bundle.authData.host + '/api/session/myprofile',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -11,14 +10,14 @@ const testAuth = async (z, bundle) => {
     }
   });
 
-  if (res.status === 200) {
-    const body = await res.json();
+  if (res.json.status === 200) {
+    const body = res.json;
 
     if (body.Data.authenticated) {
       return {};
     }
 
-    throw new Error(`Session response was not authenticated: ${JSON.stringify(body)}`);
+    throw new z.errors.RefreshAuthError();
   } else if (res.status === 403) {
     throw new Error('The API Key you supplied is invalid');
   } else {

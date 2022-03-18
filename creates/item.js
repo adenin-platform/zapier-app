@@ -3,7 +3,8 @@
 const fetch = require('node-fetch');
 
 const createItem = async (z, bundle) => {
-  const res = await fetch(bundle.authData.host + bundle.authData.webhookEndpoint, {
+  const res = await z.request({
+    url: bundle.authData.host + bundle.authData.webhookEndpoint,
     method: 'POST',
     json: false,
     headers: {

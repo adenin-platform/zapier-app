@@ -17,6 +17,10 @@ const handleHTTPError = (response, z) => {
     throw new Error(`Unexpected status code ${response.status}`);
   }
 
+  if (response.json && (response.json.ErrorCode === 401)) {
+    throw new z.errors.RefreshAuthError();
+  }
+
   return response;
 };
 
