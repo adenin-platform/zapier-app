@@ -15,7 +15,7 @@ const subscribeHook = (z, bundle) => {
 
 const unsubscribeHook = (z, bundle) => {
   const options = {
-    url: `${bundle.authData.host}/api/events/unsubscribe/${bundle.subscribeData.eventName}`,
+    url: `${bundle.authData.host}/api/events/unsubscribe/${bundle.subscribeData.Data.EventName}`,
     method: 'DELETE',
   };
 
@@ -23,19 +23,28 @@ const unsubscribeHook = (z, bundle) => {
 };
 
 const getEvent = (z, bundle) => {
-  const options = {
-    url: `${bundle.authData.host}/api/events/${bundle.cleanedRequest.eventName}`,
-  };
-
-  return z.request(options).then((response) => [response.json.Data.event]);
+  return [
+    {
+      id: '1',
+      name: 'Zapier',
+      eventName: 'Example',
+    }
+  ];
 };
 
 const getEvents = (z, bundle) => {
-  const options = {
+  return [
+    {
+      id: '1',
+      name: 'Zapier',
+      eventName: 'Example',
+    }
+  ];
+  /* const options = {
     url: `${bundle.authData.host}/api/events`,
   };
 
-  return z.request(options).then((response) => response.json.Data.items || []);
+  return z.request(options).then((response) => response.json.Data.items || []); */
 };
 
 module.exports = {
@@ -66,8 +75,7 @@ module.exports = {
     outputFields: [
       { key: 'id', label: 'ID' },
       { key: 'eventName', label: 'Event Name' },
-      { key: 'name', label: 'Event Type' },
-      { key: 'url', label: 'URL' }
+      { key: 'name', label: 'Event Type' }
     ],
   },
 };
