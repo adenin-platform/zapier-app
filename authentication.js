@@ -10,7 +10,7 @@ const testAuth = async (z, bundle) => {
     }
   });
 
-  if (res.json.status === 200) {
+  if (res.status === 200) {
     const body = res.json;
 
     if (body.Data.authenticated) {
