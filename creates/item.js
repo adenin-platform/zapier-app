@@ -1,17 +1,10 @@
 'use strict';
 
-const fetch = require('node-fetch');
-
 const createItem = async (z, bundle) => {
   const res = await z.request({
     url: bundle.authData.host + bundle.authData.webhookEndpoint,
     method: 'POST',
-    json: false,
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${bundle.authData.access_token}`
-    },
-    body: JSON.stringify({
+    body: {
       _type: bundle.inputData.type,
       id: bundle.inputData.id,
       title: bundle.inputData.title,
@@ -23,13 +16,17 @@ const createItem = async (z, bundle) => {
       assignedTo: bundle.inputData.assignedTo || [],
       roles: bundle.inputData.roles || [],
       properties: bundle.inputData.properties || []
-    })
+    }
   });
 
   if (res.status === 200) {
-    // we have to return some object, event if it is empty, its expected
-    // ref: https://stackoverflow.com/a/51933850
+    if (res.json && res.json.ErrorCode === 401) {
+      throw new z.errors.RefreshAuthError();
+    }
+
     return {};
+  } else if (res.status === 401 || res.status === 403) {
+    throw new z.errors.RefreshAuthError();
   } else {
     throw new Error(`Unexpected status code ${res.status} and text: "${res.statusText}"`);
   }

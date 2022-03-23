@@ -3,11 +3,7 @@
 const testAuth = async (z, bundle) => {
   const res = await z.request({
     url: bundle.authData.host + '/api/session/myprofile',
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + bundle.authData.access_token
-    }
+    method: 'GET'
   });
 
   if (res.status === 200) {
@@ -18,8 +14,8 @@ const testAuth = async (z, bundle) => {
     }
 
     throw new z.errors.RefreshAuthError();
-  } else if (res.status === 403) {
-    throw new Error('The API Key you supplied is invalid');
+  } else if (res.status === 403 || res.status === 401) {
+    throw new z.errors.RefreshAuthError();
   } else {
     throw new Error(`Unexpected status code ${res.status} and text: "${res.statusText}"`);
   }

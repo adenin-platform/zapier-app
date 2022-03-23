@@ -13,6 +13,10 @@ const addBearerHeader = (request, z, bundle) => {
 };
 
 const handleHTTPError = (response, z) => {
+  if (response.status === 401 || response.status === 403) {
+    throw new z.errors.RefreshAuthError();
+  }
+
   if (response.status >= 400) {
     throw new Error(`Unexpected status code ${response.status}`);
   }
