@@ -51,12 +51,12 @@ module.exports = {
     },
     refreshAccessToken: {
       method: 'POST',
-      url: '{{bundle.inputData.host}}/oauth2/token',
+      url: '{{bundle.authData.host}}/oauth2/token',
       body: {
         refresh_token: '{{bundle.authData.refresh_token}}',
         client_id: '{{process.env.CLIENT_ID}}',
         client_secret: '{{process.env.CLIENT_SECRET}}',
-        redirect_uri: '{{bundle.inputData.redirect_uri}}',
+        redirect_uri: '{{bundle.authData.redirect_uri}}',
         grant_type: 'refresh_token',
       },
       headers: {
@@ -67,7 +67,7 @@ module.exports = {
     scope: '',
   },
   fields: [
-    { key: 'host', type: 'string', required: true, default: 'https://app.adenin.com' },
-    { key: 'webhookEndpoint', type: 'string', required: true, default: '/webhook-receiver' }
+    { key: 'host', type: 'string', required: false, default: 'https://app.adenin.com' },
+    { key: 'webhookEndpoint', type: 'string', required: false, default: '/webhook-receiver' }
   ],
 };

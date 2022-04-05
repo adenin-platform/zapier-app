@@ -61,6 +61,51 @@ module.exports = {
         type: 'string',
         helpText: 'The name of the event.',
       },
+      {
+        key: 'value1',
+        type: 'string',
+        helpText: 'A custom value.',
+      },
+      {
+        key: 'value2',
+        type: 'string',
+        helpText: 'A custom value.',
+      },
+      {
+        key: 'value3',
+        type: 'string',
+        helpText: 'A custom value.',
+      },
+      {
+        key: 'value4',
+        type: 'string',
+        helpText: 'A custom value.',
+      },
+      {
+        key: 'value5',
+        type: 'string',
+        helpText: 'A custom value.',
+      },
+      {
+        key: 'value6',
+        type: 'string',
+        helpText: 'A custom value.',
+      },
+      {
+        key: 'value7',
+        type: 'string',
+        helpText: 'A custom value.',
+      },
+      {
+        key: 'value8',
+        type: 'string',
+        helpText: 'A custom value.',
+      },
+      {
+        key: 'value9',
+        type: 'string',
+        helpText: 'A custom value.',
+      },
     ],
     type: 'hook',
     performSubscribe: subscribeHook,

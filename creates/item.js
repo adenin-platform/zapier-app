@@ -47,8 +47,8 @@ module.exports = {
   key: 'items',
   noun: 'Item',
   display: {
-    label: 'Create Item',
-    description: 'Creates a Item.'
+    label: 'Create or Update Item',
+    description: 'Creates or updates an item.'
   },
   operation: {
     inputFields: [
@@ -60,13 +60,13 @@ module.exports = {
         helpText: 'Name of the Card this data is for',
         default: 'New Card'
       },
-      { key: 'id', label: 'Id', required: true },
+      { key: 'id', label: 'Id', required: false },
       { key: 'title', label: 'Title', required: true },
       { key: 'description', label: 'Description', required: false },
       { key: 'link', label: 'Link', required: false },
       { key: 'date', label: 'Date', required: false },
       { key: 'dueDate', label: 'Due Date', required: false },
-      { key: 'openExpression', label: 'Open Expression', required: false },
+      { key: 'openExpression', label: 'Open', required: false },
       { key: 'assignedTo', label: 'Assigned To', list: true, required: false },
       { key: 'properties', label: 'Properties', dict: true, required: false },
       {
