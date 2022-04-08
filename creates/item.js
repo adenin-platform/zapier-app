@@ -12,7 +12,7 @@ const createItem = async (z, bundle) => {
       link: bundle.inputData.link,
       date: bundle.inputData.date,
       dueDate: bundle.inputData.dueDate,
-      openValue: doEval(bundle.inputData.openExpression),
+      open: doEval(bundle.inputData.openExpression),
       assignedTo: bundle.inputData.assignedTo || [],
       roles: bundle.inputData.roles || [],
       properties: bundle.inputData.properties || []
