@@ -60,51 +60,7 @@ module.exports = {
         key: 'eventName',
         type: 'string',
         helpText: 'The name of the event.',
-      },
-      {
-        key: 'value1',
-        type: 'string',
-        helpText: 'A custom value.',
-      },
-      {
-        key: 'value2',
-        type: 'string',
-        helpText: 'A custom value.',
-      },
-      {
-        key: 'value3',
-        type: 'string',
-        helpText: 'A custom value.',
-      },
-      {
-        key: 'value4',
-        type: 'string',
-        helpText: 'A custom value.',
-      },
-      {
-        key: 'value5',
-        type: 'string',
-        helpText: 'A custom value.',
-      },
-      {
-        key: 'value6',
-        type: 'string',
-        helpText: 'A custom value.',
-      },
-      {
-        key: 'value7',
-        type: 'string',
-        helpText: 'A custom value.',
-      },
-      {
-        key: 'value8',
-        type: 'string',
-        helpText: 'A custom value.',
-      },
-      {
-        key: 'value9',
-        type: 'string',
-        helpText: 'A custom value.',
+        required: true
       },
     ],
     type: 'hook',
@@ -120,7 +76,43 @@ module.exports = {
     outputFields: [
       { key: 'id', label: 'ID' },
       { key: 'eventName', label: 'Event Name' },
-      { key: 'name', label: 'Event Type' }
+      { key: 'name', label: 'Event Type' },
+      {
+        key: 'value1',
+        label: 'A custom value.',
+      },
+      {
+        key: 'value2',
+        label: 'A custom value.',
+      },
+      {
+        key: 'value3',
+        label: 'A custom value.',
+      },
+      {
+        key: 'value4',
+        label: 'A custom value.',
+      },
+      {
+        key: 'value5',
+        label: 'A custom value.',
+      },
+      {
+        key: 'value6',
+        label: 'A custom value.',
+      },
+      {
+        key: 'value7',
+        label: 'A custom value.',
+      },
+      {
+        key: 'value8',
+        label: 'A custom value.',
+      },
+      {
+        key: 'value9',
+        label: 'A custom value.',
+      },
     ],
   },
 };
