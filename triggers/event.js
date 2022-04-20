@@ -62,6 +62,11 @@ module.exports = {
         helpText: 'The name of the event.',
         required: true
       },
+      {
+        key: 'id',
+        type: 'string',
+        helpText: 'Unique ID'
+      }
     ],
     type: 'hook',
     performSubscribe: subscribeHook,
@@ -77,41 +82,43 @@ module.exports = {
       { key: 'id', label: 'ID' },
       { key: 'eventName', label: 'Event Name' },
       { key: 'name', label: 'Event Type' },
+      { key: 'teaserImageUrl', label: 'Teaser Image URL' },
+      { key: 'enableDismiss', label: "Show 'Dismiss' button" },
       {
         key: 'value1',
-        label: 'A custom value.',
+        label: 'Value 1',
       },
       {
         key: 'value2',
-        label: 'A custom value.',
+        label: 'Value 2',
       },
       {
         key: 'value3',
-        label: 'A custom value.',
+        label: 'Value 3',
       },
       {
         key: 'value4',
-        label: 'A custom value.',
+        label: 'Value 4',
       },
       {
         key: 'value5',
-        label: 'A custom value.',
+        label: 'Value 5',
       },
       {
         key: 'value6',
-        label: 'A custom value.',
+        label: 'Value 6',
       },
       {
         key: 'value7',
-        label: 'A custom value.',
+        label: 'Value 7',
       },
       {
         key: 'value8',
-        label: 'A custom value.',
+        label: 'Value 8',
       },
       {
         key: 'value9',
-        label: 'A custom value.',
+        label: 'Value 9',
       },
     ],
   },
