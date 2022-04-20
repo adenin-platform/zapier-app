@@ -82,8 +82,6 @@ module.exports = {
       { key: 'id', label: 'ID' },
       { key: 'eventName', label: 'Event Name' },
       { key: 'name', label: 'Event Type' },
-      { key: 'teaserImageUrl', label: 'Teaser Image URL' },
-      { key: 'enableDismiss', label: "Show 'Dismiss' button" },
       {
         key: 'value1',
         label: 'Value 1',

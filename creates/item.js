@@ -68,6 +68,9 @@ module.exports = {
       { key: 'dueDate', label: 'Due Date', required: false },
       { key: 'openExpression', label: 'Open', required: false },
       { key: 'assignedTo', label: 'Assigned To', list: true, required: false },
+      { key: 'teaserImageUrl', label: 'Teaser Image URL', required: false },
+      { key: 'enableDismiss', label: "Show 'Dismiss' button", required: false },
+      { key: 'flag', label: "Status Flag", required: false },
       { key: 'properties', label: 'Properties', dict: true, required: false },
       {
         key: 'roles',
