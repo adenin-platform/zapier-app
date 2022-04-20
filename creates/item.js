@@ -12,10 +12,13 @@ const createItem = async (z, bundle) => {
       link: bundle.inputData.link,
       date: bundle.inputData.date,
       dueDate: bundle.inputData.dueDate,
-      open: doEval(bundle.inputData.openExpression),
+      open: bundle.inputData.openExpression,
       assignedTo: bundle.inputData.assignedTo || [],
       roles: bundle.inputData.roles || [],
-      properties: bundle.inputData.properties || []
+      properties: bundle.inputData.properties || [],
+      teaserImageUrl: bundle.inputData.teaserImageUrl,
+      enableDismiss: bundle.inputData.enableDismiss,
+      flag: bundle.inputData.flag,
     }
   });
 
@@ -31,17 +34,6 @@ const createItem = async (z, bundle) => {
     throw new Error(`Unexpected status code ${res.status} and text: "${res.statusText}"`);
   }
 };
-
-function doEval(expression) {
-  try {
-    // eslint-disable-next-line no-eval
-    return eval(expression);
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-  }
-  return true;
-}
 
 module.exports = {
   key: 'items',
