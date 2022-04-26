@@ -21,9 +21,14 @@ const testAuth = async (z, bundle) => {
   }
 };
 
+const getConnectionLabel = (z, bundle) => {
+  return bundle.inputData.Data.Email;
+};
+
 module.exports = {
   type: 'oauth2',
   test: testAuth,
+  connectionLabel: getConnectionLabel,
   oauth2Config: {
     authorizeUrl: {
       method: 'GET',
