@@ -57,7 +57,7 @@ const App = {
     }
   },
   triggers: {
-    [eventTrigger.key]: eventTrigger
+    //[eventTrigger.key]: eventTrigger
   },
   searches: {},
   creates: {
