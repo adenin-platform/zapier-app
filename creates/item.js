@@ -42,8 +42,8 @@ module.exports = {
   key: "items",
   noun: "Item",
   display: {
-    label: "Create or Update Item",
-    description: "Creates or updates an item.",
+    label: "Generate new Card entry",
+    description: "Adds a new list item to either a new or existing Card on your Board",
   },
   operation: {
     inputFields: [
