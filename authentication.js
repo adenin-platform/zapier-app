@@ -10,7 +10,7 @@ const testAuth = async (z, bundle) => {
     const body = res.json;
 
     if (body.Data.authenticated) {
-      return {};
+      return body;
     }
 
     throw new z.errors.RefreshAuthError();
@@ -73,14 +73,14 @@ module.exports = {
       type: 'string',
       required: false,
       default: 'https://app.adenin.com',
-      helpText: 'The backend instance to use (if using a custom deployment)'
+      helpText: 'The backend instance to use (if using a [custom deployment](https://www.adenin.com/digital-assistant/pricing/#self-managed))'
     },
     {
       key: 'webhookEndpoint',
       type: 'string',
       required: false,
       default: '/webhook-receiver',
-      helpText: 'The webhook receiver endpoint to use (if using a custom deployment)'
+      helpText: 'The webhook receiver endpoint to use (if using a [custom deployment](https://www.adenin.com/digital-assistant/pricing/#self-managed))'
     }
   ],
 };
