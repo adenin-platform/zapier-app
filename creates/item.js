@@ -42,10 +42,20 @@ module.exports = {
   key: "items",
   noun: "Item",
   display: {
-    label: "Generate new Card entry",
+    label: "Generate New Card Entry",
     description: "Adds a new list item to either a new or existing Card on your Board",
   },
   operation: {
+    sample: {
+      title: 'My Tasks',
+      id: '1054889',
+      itemTitle: 'Guest WiFi access',
+      description: 'The credentials for the guest WiFi network listed on the Intranet don\'t work.',
+      teaserImageUrl: 'https://www.adenin.com/assets/images/generated_photos/5e6801a36d3b380006d3c72f-l.jpg',
+      date: '2021-05-11T09:013:23.000Z',
+      link: 'https://www.adenin.com/pocdef',
+      flag: '🔴'
+    },
     inputFields: [
       {
         key: "title",
