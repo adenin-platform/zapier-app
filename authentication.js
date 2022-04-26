@@ -24,7 +24,6 @@ const testAuth = async (z, bundle) => {
 module.exports = {
   type: 'oauth2',
   test: testAuth,
-  connectionLabel: '{{bundle.inputData.Data.UserEmail}}',
   oauth2Config: {
     authorizeUrl: {
       method: 'GET',
