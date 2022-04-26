@@ -24,6 +24,7 @@ const testAuth = async (z, bundle) => {
 module.exports = {
   type: 'oauth2',
   test: testAuth,
+  connectionLabel: '{{Data.UserEmail}}',
   oauth2Config: {
     authorizeUrl: {
       method: 'GET',
@@ -67,7 +68,19 @@ module.exports = {
     scope: '',
   },
   fields: [
-    { key: 'host', type: 'string', required: false, default: 'https://app.adenin.com' },
-    { key: 'webhookEndpoint', type: 'string', required: false, default: '/webhook-receiver' }
+    {
+      key: 'host',
+      type: 'string',
+      required: false,
+      default: 'https://app.adenin.com',
+      helpText: 'The backend instance to use (if using a custom deployment)'
+    },
+    {
+      key: 'webhookEndpoint',
+      type: 'string',
+      required: false,
+      default: '/webhook-receiver',
+      helpText: 'The webhook receiver endpoint to use (if using a custom deployment)'
+    }
   ],
 };
