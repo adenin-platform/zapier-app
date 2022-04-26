@@ -44,8 +44,7 @@ const App = {
       noun: 'Roles',
       list: {
         display: {
-          label: 'Show roles',
-          description: 'Show available roles.',
+          hidden: true
         },
         operation: {
           perform: async (z, bundle) => {
