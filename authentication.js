@@ -77,14 +77,7 @@ module.exports = {
       type: 'string',
       required: false,
       default: 'https://app.adenin.com',
-      helpText: 'The backend instance to use (if using a [custom deployment](https://www.adenin.com/digital-assistant/pricing/#self-managed))'
-    },
-    {
-      key: 'webhookEndpoint',
-      type: 'string',
-      required: false,
-      default: '/webhook-receiver',
-      helpText: 'The webhook receiver endpoint to use (if using a [custom deployment](https://www.adenin.com/digital-assistant/pricing/#self-managed))'
+      helpText: 'Default *https://app.adenin.com*. If your organization has an [Enterprise plan](https://www.adenin.com/digital-assistant/pricing/#self-managed) you can change this to use your custom domain.'
     }
   ],
 };

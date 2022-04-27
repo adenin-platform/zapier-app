@@ -2,13 +2,12 @@
 
 const createItem = async (z, bundle) => {
   const res = await z.request({
-    url: bundle.authData.host + bundle.authData.webhookEndpoint,
+    url: bundle.authData.host + '/webhook-receiver',
     method: "POST",
     body: {
       _type: bundle.inputData.type,
       id: bundle.inputData.id,
       title: bundle.inputData.title,
-      itemTitle: bundle.inputData.itemTitle,
       description: bundle.inputData.description,
       link: bundle.inputData.link,
       date: bundle.inputData.date,
@@ -47,9 +46,9 @@ module.exports = {
   },
   operation: {
     sample: {
-      title: 'My Tasks',
+      type: 'My Tasks',
       id: '1054889',
-      itemTitle: 'Guest WiFi access',
+      title: 'Guest WiFi access',
       description: 'The credentials for the guest WiFi network listed on the Intranet don\'t work.',
       teaserImageUrl: 'https://www.adenin.com/assets/images/generated_photos/5e6801a36d3b380006d3c72f-l.jpg',
       date: '2021-05-11T09:013:23.000Z',
@@ -58,7 +57,7 @@ module.exports = {
     },
     inputFields: [
       {
-        key: "title",
+        key: "type",
         label: "Name of this card",
         type: "string",
         helpText:
@@ -78,7 +77,7 @@ module.exports = {
         altersDynamicFields: false,
       },
       {
-        key: "itemTitle",
+        key: "title",
         label: "Item title",
         type: "string",
         helpText:
