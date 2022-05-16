@@ -77,7 +77,7 @@ module.exports = {
       type: 'string',
       required: false,
       default: 'https://app.adenin.com',
-      helpText: 'Default *https://app.adenin.com*. If your organization has an [Enterprise plan](https://www.adenin.com/digital-assistant/pricing/#self-managed) you can change this to use your custom domain.'
+      helpText: 'Leave as https://app.adenin.com, unless your [plan](https://www.adenin.com/digital-assistant/pricing/#self-managed) includes a custom domain. **Don\'t have a Digital Assistant account yet? [Create one for free](https://www.adenin.com/register/)**'
     }
   ],
 };

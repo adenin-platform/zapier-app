@@ -71,7 +71,7 @@ module.exports = {
         label: "Section item",
         type: "copy",
         helpText:
-          "### Let's fill your Card with live\nEach time this Zap gets triggered your Card will gain a new item. In the *below* section we're going to map fields from your Trigger to correspond to each field in the list.",
+          "### Let's fill your Card with life\nEach time this Zap gets triggered your Card will gain a new item. In the *below* section we're going to map fields from your Trigger to correspond to each field in the list.",
         required: false,
         list: false,
         altersDynamicFields: false,
